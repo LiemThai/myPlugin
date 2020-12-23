@@ -1,0 +1,68 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+  <plugin-info> 
+    <description>${project.description}</description>  
+    <version>${project.version}</version>  
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>  
+    <param name="plugin-icon">images/pluginIcon.png</param>  
+    <param name="plugin-logo">images/pluginLogo.png</param> 
+  </plugin-info>  
+  <!-- add our i18n resource -->  
+  <resource type="i18n" name="i18n" location="myPlugin"/>  
+  <!-- add our web resources -->  
+  <web-resource key="myPlugin-resources" name="myPlugin Web Resources">
+    <transformation extension="soy">
+      <transformer key="soyTransformer"/>
+    </transformation>
+
+    <resource type="soy" name="example.soy" location="templates/example.soy"/>
+    <resource type="download" name="example-table-soy.js" location="templates/example-table.soy"/>
+    <resource type="download" name="myPlugin.css" location="/css/myPlugin.css"/>
+    <resource type="download" name="myPlugin.js" location="/js/myPlugin.js"/>
+    <resource type="download" name="images/" location="/images"/>
+    <context>myPlugin</context>
+
+    <dependency>com.atlassian.auiplugin:ajs</dependency>
+    <dependency>com.atlassian.auiplugin:aui-experimental-soy-templates</dependency>
+    <dependency>com.atlassian.auiplugin:dialog2</dependency>
+    <dependency>com.atlassian.soy.soy-template-plugin:soy-deps</dependency>
+    <dependency>com.atlassian.auiplugin:aui-select2</dependency>
+    <context>jira.example.view2</context>
+
+  </web-resource>
+  <!--      WEB SECTION-->
+  <web-section name="mySection" i18n-name-key="my-section.name" key="my-section" location="my-item-link" weight="100">
+    <description key="my-section.description">The mySection Plugin</description>  
+    <label key="my-section.label"/> 
+  </web-section>
+  <web-item name="myItem" i18n-name-key="my-item.name" key="my-item" section="system.top.navigation.bar" weight="100">
+    <description key="my-item.description">The myItem Plugin</description>  
+    <label key="my-item.label"/>
+    <link linkId="my-item-link">deleteMe</link> 
+  </web-item>
+  <web-item key="web-item-key01-01" name="Atlassian" section="my-item-link/my-section" weight="40">
+    <label key="Atlas-section.label"/>
+    <link linkId="linkTest">http://www.atlassian.com</link>
+  </web-item>
+  <web-item key="web-item-key01-02" name="Test JS" section="my-item-link/my-section" weight="40">
+     <label key="js-section.label"/>
+    <link linkId="js">/secure/Example.jspa</link>
+  </web-item>
+  <!--    WEB WORK SOY FILE-->
+  <webwork1 key="newactions" name="New actions" class="java.lang.Object">
+    <actions>
+      <action name="com.atlassian.tutorial.myPlugin.Choose" alias="Example">
+        <view name="success" type="soy">:myPlugin-resources/JIRA.Templates.Example.exampleAction</view>
+      </action>
+    </actions>
+  </webwork1>
+
+  <!--ACTIVE OBJECT-->
+  <ao key="ao-module">
+    <entity>com.atlassian.tutorial.myPlugin.entity.User</entity>
+  </ao>
+
+  <!--REST API-->
+  <rest name="My Rest Resource" i18n-name-key="rest-create-table.name" key="resource" path="/resource" version="1.0">
+    <package>com.atlassian.tutorial.myPlugin.resource</package>
+  </rest>
+</atlassian-plugin>

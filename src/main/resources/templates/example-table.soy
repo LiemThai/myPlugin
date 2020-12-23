@@ -1,0 +1,66 @@
+{namespace JIRA.Templates.Example}
+/**
+ *
+ * * @param data
+ */
+{template .getATable}
+
+    <table id="my-table" class="aui">
+        <thead>
+        <tr>
+            <th width="15%">Key</th>
+            <th width="10%">ID</th>
+            <th width="30%">Display Name</th>
+            <th width="40%">Email</th>
+            <th width="5%">Action</th>
+        </tr>
+        </thead>
+    <tbody>
+        {foreach $i in $data}
+        <tr class="remove-class user-board">
+            <td>{$i.key}</td>
+            <td>{$i.id}</td>
+            <td>{$i.displayName}</td>
+            <td>{$i.emailAddress}</td>
+        <td><a id="{$i.id}" class="delete">Delete</a></td>
+        </tr>
+        {/foreach}
+    </table>
+{/template}
+
+/**
+ *
+ * * @param data
+ */
+{template .getARow}
+    <table id="my-table" class="aui">
+        <tr>
+            <th width="15%">Key</th>
+            <th width="10%">ID</th>
+            <th width="30%">Display Name</th>
+            <th width="40%">Email</th>
+            <th width="5%">Action</th>
+        </tr>
+        <tr class="remove-class user-board">
+            <td>{$data.key}</td>
+            <td>{$data.id}</td>
+            <td>{$data.displayName}</td>
+            <td>{$data.emailAddress}</td>
+            <td><a id={$data.id} class="delete">Delete</a></td>
+            </section>
+        </tr>
+    </table>
+{/template}
+
+/**
+ *
+ ** @param data
+ */
+{template .deleteContent}
+    <div>
+        <h3>Information of user</h3>
+        <p>Key: {$data.key}</p>
+        <p>Display Name: {$data.displayName}</p>
+        <p>Email Address: {$data.emailAddress}</p>
+    </div>
+{/template}

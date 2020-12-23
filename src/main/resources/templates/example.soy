@@ -1,0 +1,104 @@
+{namespace JIRA.Templates.Example}
+
+/**
+* The example page 2
+*
+*/
+{template .exampleAction}
+    {webResourceManager_requireResourcesForContext('jira.example.view2')}
+    <html>
+    <head>
+        <title>Information User</title>
+    </head>
+    <body>
+    <div class="out-div">
+        <h1>Information User</h1>
+        <div class="in-div">
+            <!--ADD USER-->
+            <div class="left-div">
+                <div class="blue-div">
+                    <h3 class="inbox">Add User</h3>
+                </div>
+                <table style="width:100%;margin-left: 10px;">
+                    <tr>
+                        <td width="80%">
+                            <form action="" method="get" class="aui">
+                                <input type="hidden" id="my-user-picker" class="text long-field" data-placeholder="Select user">
+                            </form>
+                        </td>
+                        <td><button class="aui-button" id="button-add">Add</button></td>
+                    </tr>
+                </table>
+            </div>
+            <!--SHOW INFO OF USER-->
+            <div class="right-div">
+                <div class="blue-div">
+                    <h3 class="inbox">List of User(s)</h3>
+                </div>
+                <div class="table-div">
+                    <table width="95%" class="aui" id="get-table"></table>
+                </div>
+                <button class="aui-button btn-show-all" id="button-show-all">Show All</button>
+            </div>
+
+<!--            BOARD OF UPDATE-->
+            <section id="update-board" class="aui-dialog2 aui-dialog2-medium aui-layer" role="dialog" aria-hidden="true">
+
+                <div class="blue-div">
+                    <h3 class="inbox">Update User</h3>
+                </div>
+                <table class="table-update">
+                    <tr>
+                        <th>Key</th>
+                        <td><input type="text" id="key" name="key" placeholder="nhahuynh" size="30"/></td>
+                    </tr>
+                    <tr>
+                        <th>Display Name</th>
+                        <td><input type="text" id="displayName" name="displayName" placeholder="Nha Huynh" size="30"/></td>
+                    </tr>
+                    <tr>
+                        <th>Email Address</th>
+                        <td><input type="text" id="emailAddress" name="emailAddress" placeholder="nhahuynh@gmail.com" size="30"/></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button class="aui-button" id="button-update">Update</button></td>
+                    </tr>
+                </table>
+            </section>
+
+<!--            WARNING DELETE-->
+            <section id="delete-warning" class="aui-dialog2 aui-dialog2-small aui-dialog2-warning aui-layer" role="dialog" aria-hidden="true">
+                <header class="aui-dialog2-header">
+                    <h2 class="aui-dialog2-header-main">Do you want to delete this user?</h2>
+                </header>
+                <div class="aui-dialog2-content" id="user-warning">
+
+                </div>
+                <footer class="aui-dialog2-footer">
+                    <div class="aui-dialog2-footer-actions">
+                        <button id="button-confirm" class="aui-button aui-button-primary">Okay</button>
+                        <button id="button-cancel" class="aui-button aui-button-link">Cancel</button>
+                    </div>
+                </footer>
+            </section>
+            <!--FIND USER-->
+            <div class="left-div">
+                <div class="blue-div">
+                    <h3 class="inbox">Search User</h3>
+                </div>
+                <table style="width:100% ;margin-left: 10px;">
+                    <tr>
+                        <td>ID</td>
+                        <td><input class="text" type="text" id="ID" placeholder="12" size="30">&nbsp
+                            <button class="aui-button" id="button-search">Search</button></td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    </body>
+    </html>
+
+{/template}
